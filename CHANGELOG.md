@@ -20,3 +20,4 @@
 - State that both Colab runs used the version before the spelling change.
 - Link the videos of the two projects that use the model.
 - Video links now start from the beginning.
+- Record the Colab run of the version with US spelling.

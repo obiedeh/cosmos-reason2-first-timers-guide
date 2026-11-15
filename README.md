@@ -100,7 +100,7 @@ The notebook downloads about 50 MB of NVIDIA's sample footage from NVIDIA's own 
 | Model | `nvidia/Cosmos-Reason2-2B`, 16-bit weights, about 4.9 GB to download and 4.3 GB on the GPU |
 | Library | `transformers==4.57.3`, the version NVIDIA's own sample pins |
 | Measured on | `rtx-5090-workstation`, PyTorch 2.11.0 with CUDA 12.8, 2026-11-14 |
-| Also run on | Google Colab, 2026-11-14, start to finish with no errors on both the free T4 GPU runtime and an A100 runtime. Both Colab runs were on the version before the spelling change. Outputs from the Colab runs were not saved. |
+| Also run on | Google Colab, 2026-11-14, start to finish with no errors on both the free T4 GPU runtime and an A100 runtime. Both of those runs were on the version before the spelling change. The version with US spelling was then run on Colab to the end with no errors (2026-11-14). Outputs from the Colab runs were not saved. |
 | Server tests (Part 17) | vLLM 0.33.0 on `rtx-5090-workstation`. Reference text in the notebook, not executed cells. |
 
 ## How it works
