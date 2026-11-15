@@ -20,6 +20,13 @@ Catching digits that flash on screen for half a second: below 2 frames per secon
 
 I use Cosmos Reason 2 in my own projects, including [Urban Edge Vision Analytics](https://github.com/obiedeh/urban-edge-vision-analytics), which watches live street cameras, and [Physical AI Safety Observability](https://github.com/obiedeh/physical-ai-safety-observability), a safety layer for robot workcells. In the safety project, one change to the request took false protective-gear alarms from 11 to zero on my labeled test frames. Settings like that are easy to miss, so I wrote the guide I would hand a developer new to the model.
 
+See both projects running on a Jetson AGX Thor:
+
+| Project | Video |
+|---|---|
+| Urban Edge Vision Analytics | [World Model vs YOLO: Cosmos Reason on Jetson AGX Thor](https://www.youtube.com/watch?v=PtIh9hnD8Lo&t=20s) |
+| Physical AI Safety Observability | [PPE Detection: NVIDIA Cosmos Reason 2 on Jetson AGX Thor](https://www.youtube.com/watch?v=bXhttNSlDP0&t=71s) |
+
 I built it for Google Colab on purpose, to make the model easier to learn and adopt. It runs in a browser with nothing to install on your own machine, so a first-timer can go from zero to a working call without owning a GPU.
 
 ## The model, its sizes, and why the 2B

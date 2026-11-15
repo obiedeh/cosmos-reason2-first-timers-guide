@@ -5,7 +5,7 @@
 
 **By Obinna Edeh**, Head of Physical AI Lab, EmbodiedEdge
 
-**Why I built this.** I use Cosmos Reason 2 in my own projects, including [Urban Edge Vision Analytics](https://github.com/obiedeh/urban-edge-vision-analytics), which watches live street cameras, and [Physical AI Safety Observability](https://github.com/obiedeh/physical-ai-safety-observability), a safety layer for robot workcells. In the safety project, one change to the request took false protective-gear alarms from 11 to zero on my labeled test frames. Settings like that are easy to miss, so I wrote the guide I would hand a developer new to the model: every setting measured for what it does to accuracy and response time.
+**Why I built this.** I use Cosmos Reason 2 in my own projects, including [Urban Edge Vision Analytics](https://github.com/obiedeh/urban-edge-vision-analytics), which watches live street cameras, and [Physical AI Safety Observability](https://github.com/obiedeh/physical-ai-safety-observability), a safety layer for robot workcells. Both are on video: [Urban Edge](https://www.youtube.com/watch?v=PtIh9hnD8Lo&t=20s) and [the safety checker](https://www.youtube.com/watch?v=bXhttNSlDP0&t=71s). In the safety project, one change to the request took false protective-gear alarms from 11 to zero on my labeled test frames. Settings like that are easy to miss, so I wrote the guide I would hand a developer new to the model: every setting measured for what it does to accuracy and response time.
 
 **Why Google Colab.** I built it for Colab on purpose, to make the model easier to learn and adopt. It runs in a browser with nothing to install on your own machine, so a first-timer can go from zero to a working call without owning a GPU.
 
@@ -1443,8 +1443,8 @@ show(ask("What happens here?", video="my_clip.mp4", clip=(10, 20)))       # only
 
 Obinna Edeh runs EmbodiedEdge, a Physical AI lab. He designs and builds Physical AI and edge AI systems, and proves them on real robots and hardware. He runs Cosmos Reason 2 on a Jetson AGX Thor.
 
-- Urban Edge Vision Analytics: https://github.com/obiedeh/urban-edge-vision-analytics
-- Physical AI Safety Observability: https://github.com/obiedeh/physical-ai-safety-observability
+- Urban Edge Vision Analytics: https://github.com/obiedeh/urban-edge-vision-analytics ([video](https://www.youtube.com/watch?v=PtIh9hnD8Lo&t=20s))
+- Physical AI Safety Observability: https://github.com/obiedeh/physical-ai-safety-observability ([video](https://www.youtube.com/watch?v=bXhttNSlDP0&t=71s))
 - GitHub: https://github.com/obiedeh
 - LinkedIn: https://www.linkedin.com/in/obinna-edeh-206306137/
 - Lab: https://embodiededge.ai
