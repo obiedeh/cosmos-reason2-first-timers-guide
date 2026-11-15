@@ -99,7 +99,9 @@ Video frames are read with OpenCV and passed to the processor with their timesta
 
 ## Measured results
 
-All figures below come from one run on `rtx-5090-workstation` on 2026-11-14. The record is [`records/cosmos_reason2_first_timers_guide.executed.rtx-5090-workstation.2026-11-14.ipynb`](records/cosmos_reason2_first_timers_guide.executed.rtx-5090-workstation.2026-11-14.ipynb), the same notebook with its outputs. The full run took 171 seconds.
+All figures below come from one run on `rtx-5090-workstation` on 2026-11-14. The record is [`records/cosmos_reason2_first_timers_guide.executed.rtx-5090-workstation.2026-11-14-run2.ipynb`](records/cosmos_reason2_first_timers_guide.executed.rtx-5090-workstation.2026-11-14-run2.ipynb), the same notebook with its outputs. The full run took 179 seconds.
+
+An earlier run from the same day is kept beside it. Its test questions used British spelling ("colour"). The second run uses US spelling, and two results moved between the runs: batching went from 1.4x to 1.5x, and the lowest warehouse score went from 2 to 1 of 6.
 
 | Change | Before | After |
 |---|---|---|
@@ -109,8 +111,8 @@ All figures below come from one run on `rtx-5090-workstation` on 2026-11-14. The
 | Video frame budget raised from 256 to 512 tokens | wrong | right |
 | 20-digit clip split into 8 clips at 512 tokens, against one call at 4096 | 40 digits returned | all 20, in order |
 | Escape clause added to a leading question | invents a black coffee cup | says there is none |
-| Batching several questions in one call | 1.20 s | 0.87 s (1.4x), 6.0 GB peak |
-| 4-bit loading | 4.3 GB | 1.7 GB, about 25% slower, 4 of 6 labels read where 16-bit reads 6 |
+| Batching several questions in one call | 1.30 s | 0.88 s (1.5x), 6.0 GB peak |
+| 4-bit loading | 4.3 GB, 113 tokens a second | 1.7 GB, 80 tokens a second, 4 of 6 labels read at 256 vision tokens where 16-bit reads 6 |
 
 Results that did not improve, kept because they are useful:
 
@@ -119,7 +121,7 @@ Results that did not improve, kept because they are useful:
 - **Media order and system prompt** made no clear difference: 9, 8, 9 and 9 of 12.
 - **Too many clips hurts.** 12 clips double-counted digits cut at clip boundaries (22 returned for 20), and 8 clips at 128 tokens invented digits (77 returned).
 - **Answer agreement works as a warning.** Where sampled answers agreed, 3 of 3 were right. Where they scattered, 0 of 5 were right.
-- **Real warehouse footage** scored 2 to 3 of 6 at every frame rate and budget tried, and reasoning did not help. One error is specific to real scenes: the model says the second person wears a vest because a vest hangs on a post in the same frames.
+- **Real warehouse footage** scored 1 to 3 of 6 across every frame rate and budget tried, and reasoning did not help. One error is specific to real scenes: the model says the second person wears a vest because a vest hangs on a post in the same frames.
 
 ## Issues found and their causes
 
@@ -143,7 +145,7 @@ Kept as found. Nothing here was cleaned up to make the work look smoother.
 - **These are small tests.** Each accuracy test has 5 to 12 questions. They show an effect. They are not benchmarks.
 - **Timings are from an RTX 5090.** Expect slower numbers on other GPUs.
 - **Server notes apply to vLLM 0.33.0 only.** Older and newer versions were not tested.
-- **The record's text cells were updated after the run** (title and author notes). Its code cells and outputs are as measured.
+- **The earlier record's text cells were updated after its run** (title and author notes). Its code cells and outputs are as measured.
 
 ## Editing the notebook
 

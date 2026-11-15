@@ -184,11 +184,11 @@ CODES = ["KX-4827", "BT-9153", "QM-3068", "ZR-7742", "HD-5291", "LV-1836"]
 def make_label_image(path="labels.png", codes=CODES):
     im = Image.new("RGB", (1600, 1000), (205, 200, 190))
     d = ImageDraw.Draw(im)
-    colours = [(170, 120, 70), (90, 120, 160), (120, 150, 100), (160, 100, 100), (130, 110, 150), (180, 160, 90)]
+    colors = [(170, 120, 70), (90, 120, 160), (120, 150, 100), (160, 100, 100), (130, 110, 150), (180, 160, 90)]
     small, big = ImageFont.load_default(size=22), ImageFont.load_default(size=40)
     for i, code_text in enumerate(codes):
         x, y = 120 + (i % 3) * 480, 140 + (i // 3) * 440
-        d.rectangle([x, y, x + 360, y + 300], fill=colours[i], outline=(40, 40, 40), width=4)
+        d.rectangle([x, y, x + 360, y + 300], fill=colors[i], outline=(40, 40, 40), width=4)
         d.rectangle([x + 110, y + 120, x + 250, y + 170], fill="white", outline="black", width=2)
         d.text((x + 180, y + 145), code_text, font=small, fill="black", anchor="mm")
         d.text((x + 180, y + 50), f"BOX {i + 1}", font=big, fill="white", anchor="mm")
@@ -429,7 +429,7 @@ WAREHOUSE_QUESTIONS = [
     dict(q="One person picks a cardboard box up off the floor. Is that person wearing a high-visibility vest? Answer yes or no.", truth="no"),
     dict(q="There are signs with single letters on the shelf posts. Which letters are shown? Answer with the letters only.",
          truth=lambda a: sorted(set(re.findall(r"\b([a-z])\b", a.lower()))) == list("cdef")),
-    dict(q="What colour is the hard hat worn by the first worker? One word.", truth="yellow"),
+    dict(q="What color is the hard hat worn by the first worker? One word.", truth="yellow"),
 ]
 
 def sweep(questions, name, values, **fixed):
@@ -502,7 +502,7 @@ show_prompt(inputs)
 Three facts to carry forward:
 
 1. **Cost is counted in tokens.** Time and memory grow with `input_tokens + output_tokens`.
-2. **Vision dominates the input.** One vision token covers a 32 x 32 pixel patch, so a 1024 x 1024 image is about 1,024 tokens. In video, two neighbouring frames share one set of tokens.
+2. **Vision dominates the input.** One vision token covers a 32 x 32 pixel patch, so a 1024 x 1024 image is about 1,024 tokens. In video, two neighboring frames share one set of tokens.
 3. **You control both sides.** The vision budget and `fps` set the input size. `max_new_tokens` caps the output size.
 
 ## Part 4. `max_new_tokens`: output length and time
@@ -659,7 +659,7 @@ What to read here:
 
 - **One call** gets most of the sequence and then loses its place, repeating or inventing digits. Check `digits_returned` against the true count of twenty.
 - **Eight clips at 512 tokens** uses about the same total tokens as the single call. Each call has only two or three digits to report, which is a much easier job.
-- **Twelve clips** has more calls and more tokens, and a different failure: a clip boundary lands in the middle of a digit's half second on screen, so both neighbouring clips report it and it is counted twice. Look for doubled digits in the answer.
+- **Twelve clips** has more calls and more tokens, and a different failure: a clip boundary lands in the middle of a digit's half second on screen, so both neighboring clips report it and it is counted twice. Look for doubled digits in the answer.
 - **Eight clips at 128 tokens** starves each clip of detail, and the model invents sequences, exactly as in 6.2.
 
 **Rule:** split a long video into clips short enough to hold a few events each, give each clip enough tokens to be legible, and decide what happens at the boundaries. Overlap the clips and remove duplicates, or cut where nothing is happening. Then test the clip length on footage with a known answer, because the best value is not the largest or the smallest.
@@ -714,7 +714,7 @@ Now the cost side. The same image question at growing input sizes, with the answ
 #%% code
 rows = []
 for budget in (256, 1024, 2048, 4096):
-    r = ask("What colour is the tape? One word.", image=ROBOT_IMAGE, max_vision_tokens=budget, max_new_tokens=8)
+    r = ask("What color is the tape? One word.", image=ROBOT_IMAGE, max_vision_tokens=budget, max_new_tokens=8)
     rows.append({"max_vision_tokens": budget, "input_tokens": r["input_tokens"], "gen_s": r["gen_s"],
                  "peak_gpu_gb": r["peak_gpu_gb"], "answer": r["text"]})
 pd.DataFrame(rows)
@@ -891,7 +891,7 @@ STRUCTURE_QUESTIONS = [
     dict(video=DIGIT_VIDEO, q=LIST_DIGITS, truth=lambda a: digits_said(a) == DIGITS),
     dict(video=DIGIT_VIDEO, q="Large white digits flash on the screen one at a time. Which digit appears immediately after the digit 9?", truth="4"),
     dict(image=LABEL_IMAGE, max_vision_tokens=512, q="Read the code printed on the white label of BOX 4. Answer with the code only.", truth="zr-7742"),
-    dict(image=ROBOT_IMAGE, q="What colour is the roll of tape? One word.", truth="blue"),
+    dict(image=ROBOT_IMAGE, q="What color is the roll of tape? One word.", truth="blue"),
     dict(image=ROBOT_IMAGE, q="How many robot hands are visible? Answer with a number.", truth="2"),
     dict(image=ROBOT_IMAGE, q="Is the basket empty? Answer yes or no.", truth="yes"),
 ] + [dict(video=WAREHOUSE_VIDEO, fps=1, **item) for item in WAREHOUSE_QUESTIONS]
@@ -927,8 +927,8 @@ A question that assumes something exists pushes the model to play along. The cel
 
 #%% code
 ABSENT = [
-    ("Is there a coffee cup on the table? Answer yes or no.", "What colour is the coffee cup on the table?"),
-    ("Is there a person's face visible in this image? Answer yes or no.", "What colour is the hair of the person in the image?"),
+    ("Is there a coffee cup on the table? Answer yes or no.", "What color is the coffee cup on the table?"),
+    ("Is there a person's face visible in this image? Answer yes or no.", "What color is the hair of the person in the image?"),
     ("Is there a laptop on the table? Answer yes or no.", "What brand is the laptop on the table?"),
     ("Is there any fruit in the basket? Answer yes or no.", "What kind of fruit is in the basket?"),
 ]
@@ -957,7 +957,7 @@ The cell runs eight questions with known answers seven times each at temperature
 from collections import Counter
 
 AGREEMENT_QUESTIONS = [
-    dict(image=ROBOT_IMAGE, q="What colour is the roll of tape? One word.", truth="blue"),
+    dict(image=ROBOT_IMAGE, q="What color is the roll of tape? One word.", truth="blue"),
     dict(image=ROBOT_IMAGE, q="How many robot hands are visible? Answer with the number only.", truth="2"),
     dict(image=LABEL_IMAGE, max_vision_tokens=512, q="Read the code on the white label of BOX 4. Answer with the code only.", truth="zr-7742"),
     dict(image=LABEL_IMAGE, max_vision_tokens=96, q="Read the code on the white label of BOX 1. Answer with the code only.", truth="kx-4827"),
@@ -1085,17 +1085,17 @@ Check each answer against its frames. In the driving clip a worker holds up a ST
 The prompt is `Locate the bounding box of {object}. Return a json.` The box comes back as `[x1, y1, x2, y2]` on a 0 to 1000 grid, whatever the image size, so multiply by `width / 1000` and `height / 1000` to get pixels.
 
 #%% code
-def draw_boxes(image_path, objects, colours=("red", "lime", "cyan", "yellow")):
+def draw_boxes(image_path, objects, colors=("red", "lime", "cyan", "yellow")):
     picture = Image.open(image_path).convert("RGB")
     draw = ImageDraw.Draw(picture)
     W, H = picture.size
-    for obj, colour in zip(objects, colours):
+    for obj, color in zip(objects, colors):
         r = ask(f"Locate the bounding box of {obj}. Return a json.", image=image_path, max_new_tokens=128)
         print(r["text"], "\n")
         try:
             for item in parse_json(r["text"]):
                 x1, y1, x2, y2 = item["bbox_2d"]
-                draw.rectangle([x1 * W / 1000, y1 * H / 1000, x2 * W / 1000, y2 * H / 1000], outline=colour, width=max(3, W // 250))
+                draw.rectangle([x1 * W / 1000, y1 * H / 1000, x2 * W / 1000, y2 * H / 1000], outline=color, width=max(3, W // 250))
         except Exception as e:
             print(f"Could not parse a box for {obj}: {e}")
     return picture
@@ -1178,7 +1178,7 @@ class Chat:
 chat = Chat(ROBOT_IMAGE)
 chat.say("What objects are on the table? Answer in one sentence.")
 chat.say("Which of those is closest to the bottom of the image?")
-chat.say("What colour is it?")
+chat.say("What color is it?")
 
 #%% md
 The follow-ups say "those" and "it", and the model resolves them from the earlier turns. The input token count rises each turn, because the whole history is sent again. Long conversations fill the context window (Part 7), so drop old turns when they stop mattering.
@@ -1190,10 +1190,10 @@ The follow-ups say "those" and "it", and the model resolves them from the earlie
 A GPU can process several prompts side by side. Instead of eight calls, build eight prompts, pad them to the same length and run `generate` once. Padding must go on the left, so every prompt ends right where the answer begins.
 
 #%% code
-BATCH_QUESTIONS = ["What colour is the roll of tape? One word.", "How many robot hands are visible? Answer with a number.",
+BATCH_QUESTIONS = ["What color is the roll of tape? One word.", "How many robot hands are visible? Answer with a number.",
                    "Is the basket empty? Answer yes or no.", "What is the table made of? One word.",
                    "Is there a person in the image? Answer yes or no.", "What shape is the basket? One word.",
-                   "What colour is the basket? One word.", "What colour is the curtain behind the table? One word."]
+                   "What color is the basket? One word.", "What color is the curtain behind the table? One word."]
 
 def ask_batch(prompts, image, max_vision_tokens=1024, max_new_tokens=12):
     picture = (Image.open(image) if isinstance(image, str) else image).convert("RGB")
@@ -1352,7 +1352,7 @@ MY_QUESTIONS = [
     dict(video=WAREHOUSE_VIDEO, clip=(0, 12),  q="What is the person carrying? One word.",                             truth="box"),
     dict(video=WAREHOUSE_VIDEO, clip=(26, 45), q="Is the person in this video wearing a hard hat? Answer yes or no.", truth="no"),
     dict(video=WAREHOUSE_VIDEO, clip=(26, 45), q="Does the person pick something up from the floor? Answer yes or no.", truth="yes"),
-    dict(image=FORKLIFT_IMAGE,                 q="What colour is the forklift? One word.",                             truth="yellow"),
+    dict(image=FORKLIFT_IMAGE,                 q="What color is the forklift? One word.",                             truth="yellow"),
     dict(image=FORKLIFT_IMAGE,                 q="Is the forklift carrying a load? Answer yes or no.",                 truth="yes"),
     dict(image=ROBOT_IMAGE,                    q="Is the basket empty? Answer yes or no.",                             truth="yes"),
     dict(image=LABEL_IMAGE,                    q="Read the code on the white label of BOX 2. Answer with the code only.", truth="bt-9153"),

@@ -11,3 +11,6 @@
 - Add the three model sizes, NVIDIA's links and the reasons for using the
   2B to the README and the notebook introduction.
 - Add the author's GitHub and LinkedIn links.
+- Use US spelling in the test questions, run the notebook again on
+  `rtx-5090-workstation` and add that record. README figures now come from
+  the second run; the first record is kept.
