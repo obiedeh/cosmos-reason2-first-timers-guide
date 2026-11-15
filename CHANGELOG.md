@@ -2,6 +2,8 @@
 
 ## 2026-11-15
 
+- The author line names both models run on the Jetson AGX Thor: Cosmos
+  Reason 2 and Cosmos3-Edge.
 - The About line in the notebook names both Colab runtimes it ran on, T4
   and A100, as the README already did.
 - Link the Cosmos 3 Edge first-timers guide, which runs the same tests on
