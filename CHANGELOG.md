@@ -17,3 +17,4 @@
 - Add two charts from the second run to the top of the README.
 - Record the run on Colab's free T4 GPU runtime and drop the note that it
   was untested.
+- State that both Colab runs used the version before the spelling change.
