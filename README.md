@@ -78,7 +78,7 @@ Each of Parts 2 to 18 runs on its own after Part 1.
 1. Create a free [Hugging Face](https://huggingface.co) account if you do not have one.
 2. Open the [`nvidia/Cosmos-Reason2-2B`](https://huggingface.co/nvidia/Cosmos-Reason2-2B) model page and accept the license. The model is gated, so the download fails until you do.
 3. Create a read token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
-4. Press the Colab button above and choose a GPU runtime.
+4. Press the Colab button above and choose a GPU runtime. The free T4 GPU is enough.
 5. In Colab, click the key icon in the left bar, add a secret named `HF_TOKEN` with your token, and switch on notebook access.
 6. Run all.
 
@@ -93,7 +93,7 @@ The notebook downloads about 50 MB of NVIDIA's sample footage from NVIDIA's own 
 | Model | `nvidia/Cosmos-Reason2-2B`, 16-bit weights, about 4.9 GB to download and 4.3 GB on the GPU |
 | Library | `transformers==4.57.3`, the version NVIDIA's own sample pins |
 | Measured on | `rtx-5090-workstation`, PyTorch 2.11.0 with CUDA 12.8, 2026-11-14 |
-| Also run on | Google Colab, A100 GPU runtime, 2026-11-14, start to finish with no errors, on the version before the spelling change. Outputs from that run were not saved. |
+| Also run on | Google Colab, 2026-11-14, start to finish with no errors on both the free T4 GPU runtime and an A100 runtime. The A100 run was on the version before the spelling change. Outputs from the Colab runs were not saved. |
 | Server tests (Part 17) | vLLM 0.33.0 on `rtx-5090-workstation`. Reference text in the notebook, not executed cells. |
 
 ## How it works
@@ -153,7 +153,6 @@ Kept as found. Nothing here was cleaned up to make the work look smoother.
 
 ## What is not established
 
-- **No run on Colab's free T4 GPU.** The run on Colab used an A100. Peak memory on the workstation was 6.0 GB, which is within a T4's 15 GB, but that runtime is untested and will be slower.
 - **These are small tests.** Each accuracy test has 5 to 12 questions. They show an effect. They are not benchmarks.
 - **Timings are from an RTX 5090.** Expect slower numbers on other GPUs.
 - **Server notes apply to vLLM 0.33.0 only.** Older and newer versions were not tested.

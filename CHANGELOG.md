@@ -15,3 +15,5 @@
   `rtx-5090-workstation` and add that record. README figures now come from
   the second run; the first record is kept.
 - Add two charts from the second run to the top of the README.
+- Record the run on Colab's free T4 GPU runtime and drop the note that it
+  was untested.
