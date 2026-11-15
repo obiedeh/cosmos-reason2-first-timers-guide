@@ -14,3 +14,4 @@
 - Use US spelling in the test questions, run the notebook again on
   `rtx-5090-workstation` and add that record. README figures now come from
   the second run; the first record is kept.
+- Add two charts from the second run to the top of the README.

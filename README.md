@@ -4,6 +4,18 @@ A hands-on how-to for NVIDIA Cosmos Reason 2 (2B) on images and video, from your
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/obiedeh/cosmos-reason2-first-timers-guide/blob/main/cosmos_reason2_first_timers_guide.ipynb)
 
+## What one setting does
+
+Two charts from the notebook, measured on `rtx-5090-workstation` on 2026-11-14.
+
+![Reading small text: accuracy rises from 17% at 64 vision tokens to 100% at 256, while response time stays near 0.4 seconds](docs/figures/vision_token_budget.png)
+
+Reading six small labels: the vision token budget takes the score from 1 of 6 to 6 of 6, at almost no cost in time.
+
+![Catching short events: accuracy is 0% at 0.5 and 1 frame per second and 100% from 2 frames per second](docs/figures/frames_per_second.png)
+
+Catching digits that flash on screen for half a second: below 2 frames per second the model never sees them.
+
 ## Why I built this
 
 I use Cosmos Reason 2 in my own projects, including [Urban Edge Vision Analytics](https://github.com/obiedeh/urban-edge-vision-analytics), which watches live street cameras, and [Physical AI Safety Observability](https://github.com/obiedeh/physical-ai-safety-observability), a safety layer for robot workcells. In the safety project, one change to the request took false protective-gear alarms from 11 to zero on my labeled test frames. Settings like that are easy to miss, so I wrote the guide I would hand a developer new to the model.
@@ -81,7 +93,7 @@ The notebook downloads about 50 MB of NVIDIA's sample footage from NVIDIA's own 
 | Model | `nvidia/Cosmos-Reason2-2B`, 16-bit weights, about 4.9 GB to download and 4.3 GB on the GPU |
 | Library | `transformers==4.57.3`, the version NVIDIA's own sample pins |
 | Measured on | `rtx-5090-workstation`, PyTorch 2.11.0 with CUDA 12.8, 2026-11-14 |
-| Also run on | Google Colab, A100 GPU runtime, 2026-11-14, start to finish with no errors. Outputs from that run were not saved. |
+| Also run on | Google Colab, A100 GPU runtime, 2026-11-14, start to finish with no errors, on the version before the spelling change. Outputs from that run were not saved. |
 | Server tests (Part 17) | vLLM 0.33.0 on `rtx-5090-workstation`. Reference text in the notebook, not executed cells. |
 
 ## How it works

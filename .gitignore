@@ -4,8 +4,8 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Downloaded sample media and generated test files never enter git.
-*.mp4
-*.png
-*.jpg
+# Sample media and test files the notebook writes beside itself never enter git.
+/*.mp4
+/*.png
+/*.jpg
 out/
