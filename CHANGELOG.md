@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-15
+
+- Link the Cosmos 3 Edge first-timers guide, which runs the same tests on
+  the Cosmos3-Edge reasoner.
+
 ## 2026-11-14
 
 - Add the notebook, its plain-text source and the builder.

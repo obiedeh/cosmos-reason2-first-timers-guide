@@ -29,6 +29,8 @@ See both projects running on a Jetson AGX Thor:
 
 I built it for Google Colab on purpose, to make the model easier to learn and adopt. It runs in a browser with nothing to install on your own machine, so a first-timer can go from zero to a working call without owning a GPU.
 
+**Moving to Cosmos 3?** [Cosmos 3 Edge for First-Timers](https://github.com/obiedeh/cosmos3-edge-first-timers-guide) runs the same tests on the Cosmos3-Edge reasoner and lists what carries over from this guide and what does not.
+
 ## The model, its sizes, and why the 2B
 
 Cosmos Reason 2 is NVIDIA's vision language model for physical AI. You give it an image or a video and a question, and it answers in text.
