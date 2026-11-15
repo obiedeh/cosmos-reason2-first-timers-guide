@@ -2,6 +2,9 @@
 
 ## 2026-11-15
 
+- Link the companion Cosmos3-Edge guide near the top of the notebook,
+  with a direct Colab link, and in its sources, so a reader can open either
+  guide first.
 - The author line names both models run on the Jetson AGX Thor: Cosmos
   Reason 2 and Cosmos3-Edge.
 - The About line in the notebook names both Colab runtimes it ran on, T4
