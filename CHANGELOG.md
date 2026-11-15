@@ -10,3 +10,4 @@
   source.
 - Add the three model sizes, NVIDIA's links and the reasons for using the
   2B to the README and the notebook introduction.
+- Add the author's GitHub and LinkedIn links.

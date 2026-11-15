@@ -159,6 +159,9 @@ pytest                       # checks the notebook matches its source, and repos
 
 Obinna Edeh, Head of Physical AI Lab, [EmbodiedEdge](https://embodiededge.ai). I design and build Physical AI and edge AI systems, and prove them on real robots and hardware. I run Cosmos Reason 2 on a Jetson AGX Thor.
 
+- GitHub: [obiedeh](https://github.com/obiedeh)
+- LinkedIn: [Obinna Edeh](https://www.linkedin.com/in/obinna-edeh-206306137/)
+
 This is independent work. It is not affiliated with or endorsed by NVIDIA.
 
 ## License
