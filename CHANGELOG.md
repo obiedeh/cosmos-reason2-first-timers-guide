@@ -8,3 +8,5 @@
   established.
 - Add the repository hygiene test and a test that the notebook matches its
   source.
+- Add the three model sizes, NVIDIA's links and the reasons for using the
+  2B to the README and the notebook introduction.

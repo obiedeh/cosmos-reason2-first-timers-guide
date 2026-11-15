@@ -10,6 +10,31 @@ I use Cosmos Reason 2 in my own projects, including [Urban Edge Vision Analytics
 
 I built it for Google Colab on purpose, to make the model easier to learn and adopt. It runs in a browser with nothing to install on your own machine, so a first-timer can go from zero to a working call without owning a GPU.
 
+## The model, its sizes, and why the 2B
+
+Cosmos Reason 2 is NVIDIA's vision language model for physical AI. You give it an image or a video and a question, and it answers in text.
+
+- NVIDIA's code, samples and prompt templates: [github.com/nvidia-cosmos/cosmos-reason2](https://github.com/nvidia-cosmos/cosmos-reason2)
+- NVIDIA's prompt guide: [Cosmos Cookbook](https://nvidia-cosmos.github.io/cosmos-cookbook/getting_started/prompt_guide/reason_guide.html)
+
+NVIDIA publishes three sizes on Hugging Face:
+
+| Model | Parameters | Built on | NVIDIA's stated minimum GPU memory |
+|---|---|---|---|
+| [Cosmos-Reason2-2B](https://huggingface.co/nvidia/Cosmos-Reason2-2B) | 2.4 billion | Qwen3-VL-2B | 24 GB |
+| [Cosmos-Reason2-8B](https://huggingface.co/nvidia/Cosmos-Reason2-8B) | 8.8 billion | Qwen3-VL-8B | 32 GB |
+| [Cosmos-Reason2-32B](https://huggingface.co/nvidia/Cosmos-Reason2-32B) | 33.4 billion | Qwen3-VL-32B | not listed |
+
+The memory column is NVIDIA's figure from their README, not measured here.
+
+Why this guide uses the 2B:
+
+- **It fits the hardware a first-timer has.** In this notebook the 2B held 4.3 GB on the GPU and peaked at 6.0 GB, measured on `rtx-5090-workstation`. That is the size with the best chance on a Colab GPU.
+- **It is the one I run.** Both of my projects above use the 2B on a Jetson AGX Thor.
+- **The lessons carry over.** All three sizes share one architecture family and are called the same way, so the settings here apply to the larger models. Their scores will differ and are not measured in this guide.
+
+What the 2B gives up, from my safety project on a Jetson AGX Thor: on the same 60 frames and the same output rules, the 2B reported six people on footage with no people, and the 8B reported none. The 8B generated about 13 tokens a second there against about 60 for the 2B. When the 2B is wrong at every setting, a larger size is the next thing to try.
+
 ## What it covers
 
 | Part | Topic |
