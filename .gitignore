@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Downloaded sample media and generated test files never enter git.
+*.mp4
+*.png
+*.jpg
+out/
