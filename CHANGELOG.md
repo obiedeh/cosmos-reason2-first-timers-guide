@@ -4,6 +4,9 @@
 
 - Add the executed record of a full run on Colab's free T4 GPU runtime,
   with every output, and link it from the README.
+- Add the executed record of a full run on a Colab A100 runtime. Correct
+  the README line for the T4 run: 42 code cells, and the Part 9 reasoning
+  answer cut off at 800 tokens there too, as on the workstation.
 
 ## 2026-11-15
 
