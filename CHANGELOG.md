@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-18
+
+- Add the executed record of a full run on Colab's free T4 GPU runtime,
+  with every output, and link it from the README.
+
 ## 2026-11-15
 
 - Link the companion Cosmos3-Edge guide near the top of the notebook,
